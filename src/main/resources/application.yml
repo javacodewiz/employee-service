@@ -1,0 +1,46 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: employee-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/geekysoft
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format-sql: true
+
+  profiles:
+    active: "default"
+
+# log configuration
+logging:
+  level:
+    root: info
+
+
+# actuator configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: employee-service
+    version: 1.0
+    description: Employee Service
