@@ -58,12 +58,11 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'docker-password', usernameVariable: 'docker-username')]) {
                                      // some block where you can access $docker-username and $docker-password
-                                     sh '''
-                                         echo "Username: $docker-username"
-                                         echo "Password: $docker-password"
-                                         docker push $DOCKER_IMAGE
-                                     '''
+
                                  }
+                }
+                script{
+                  sh 'docker push $DOCKER_IMAGE'
                 }
             }
         }
