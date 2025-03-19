@@ -23,7 +23,16 @@ pipeline {
                 }
             }
         }
-
+        stage('Stop Docker Image') {
+                            steps {
+                                script {
+                                    sh '''
+                                    docker stop department-service || true
+                                    docker rm department-service || true
+                                    '''
+                                }
+                            }
+                        }
         stage('Build Docker Image') {
             steps {
                 script {
